@@ -1,40 +1,50 @@
+let compScore=0;
+let userScore= 0;
+
 const weapons = ["rock","paper","scissor"] ;
 function computerPlay (name){
     let index = Math.floor(Math.random()*3) ;
     return name[index]}
-  let computerSelection = computerPlay(weapons);  
-  let playerSelection = prompt('enter :')
-
-  let compScore=0;
-  let userScore= 0;
- function singleRound (){
+    ;
+function singleRound (){
+        let roundResult  ="" 
+        let computerSelection = computerPlay(weapons);
+        let playerSelection = prompt('enter :');
+        if ((computerSelection=='rock'&& playerSelection=='paper') 
     
+         || (computerSelection==='paper'&& playerSelection==='scissor')
+         || (computerSelection==='scissor'&& playerSelection==='rock')){
+             userScore += 1
+            roundResult = ('You win !!! You chose '+playerSelection+' wins '+ computerSelection + ' current result- you :'+userScore+' -computer: '+ compScore)
+         
+        } else if  ((computerSelection==='rock'&& playerSelection==='scissor')
+    || (computerSelection==='paper'&& playerSelection==='rock')
+    || (computerSelection==='scissor'&& playerSelection==='paper'))
+    {
+         compScore +=1 
+         roundResult = ('You lose!! '+ computerSelection + " wins " + playerSelection + ' current result- you:'+ userScore +' - computer:'+ compScore)
+         
+     } else {
+         roundResult= 'Tie!! you and the computer chose '+ computerSelection+ ' current result- you:'+userScore+' - computer:'+ compScore
+     }
+    
+    alert(roundResult)} 
 
-    if (computerSelection=='rock'&& playerSelection=='paper'){
-        return  alert("You win!! Paper wins Rock ") ; userScore++ ;
-         alert (userScore)
+    
+    for (let i=0 ; i< 500 ; i++ ){
+        singleRound()
+       /* if (userScore===5 || compScore===5){
+            alert('game over')
+          break ;} */
+          if (userScore===5){
+              alert('You win the game')
+              break;
+          }
+          if (compScore===5){
+              alert('computer win the game')
+              break;
+          }
+        
+          
+    
     }
-   else if (computerSelection==='rock'&& playerSelection==='scissor'){
-        return alert("You lose!! Rock wins Scissor "); compScore++;
-        alert (userScore)
-    }
-
-    else if (computerSelection==='paper'&& playerSelection==='rock'){
-     return alert("You lose!! Paper wins Rock "); compScore++ ;
-     alert (userScore)}
-
-    else if (computerSelection==='paper'&& playerSelection==='scissor'){
-     return alert("You win!! Scissor wins paper "); userScore++}
-    else if (computerSelection==='scissor'&& playerSelection==='paper'){
-     return alert("You lose!! Scissor wins paper ");compScore++;}
-    else if (computerSelection==='scissor'&& playerSelection==='rock'){
-        return alert("You win!! Rock wins scissor ");userScore++} 
-    else {return alert('Draw')}}
-
-
-  
-  alert('your selection is '+ playerSelection)
-  singleRound();
-  alert( "computer selection is  " + computerSelection)
-  alert("the result : " + compScore+ " : "+ userScore );
-   
