@@ -1,10 +1,8 @@
-
-    let compScore=0;
-    let userScore=0 ;
+let compScore=0;
+let userScore=0 ;
 function singleRound (num){
       
         let roundResult  ="" 
-        let roundScore= ""
         const weapons = ["rock","paper","scissor"]
 
         function computerPlay (name){
@@ -25,60 +23,47 @@ function singleRound (num){
     || (computerSelection==='scissor'&& playerSelection==='paper'))
     {
          compScore +=1 
-         roundResult = ('You lose!! '+ computerSelection + " wins " + playerSelection + ' current result- you:'+ userScore +' - computer:'+ compScore);
-           // if(compScore===5){alert('you lose the game'); break}
-         
+         roundResult = ('You lose!! '+ computerSelection + " wins " + playerSelection + ' current result- you:'+ userScore +' - computer:'+ compScore);  
      } else {
-         roundResult= 'Tie!! you and the computer chose '+ computerSelection+ ' Score is you:' + userScore + ` - computer:`+ compScore  ;
-         
+         roundResult= 'Tie!! you and the computer chose '+ computerSelection+ ' Score is you:' + userScore + ` - computer:`+ compScore  ;     
+     }  
+  round.textContent = roundResult ;
+  com.textContent = computerSelection;
+  endGame()
+} 
+
+function endGame  (){
+   if (userScore==5){ 
+     finalResult.textContent+= 'you win';
+     disableButtons();
      }
-    
-    round.textContent = roundResult ;
-    com.textContent = computerSelection;
-    endGame()
-        } 
+   if (compScore==5){ 
+     finalResult.textContent+= 'you lose the game';
+     disableButtons();
+     }
+ finalResult.textContent; 
+}  
 
-       // let declareResult = ''
-        function endGame  (){
-   
-   
-    if (userScore==5){  finalResult.textContent+= 'you win';   disableButtons()}
-    if (compScore==5){    finalResult.textContent+= 'you lose the game'; disableButtons() }
-    finalResult.textContent
-}        
+function disableButtons(){
+    rockBtn.setAttribute('disabled','disabled');
+    paperBtn.setAttribute('disabled','disabled');
+    scissorBtn.setAttribute('disabled','disabled');
+    playAgainbtn.disabled = false;   
+}
 
-
- const rockBtn = document.querySelector('.rock')
- rockBtn.addEventListener('click',()=> singleRound(0))
+const rockBtn = document.querySelector('.rock')
+rockBtn.addEventListener('click',()=> singleRound(0))
         
- const paperBtn = document.querySelector('.paper')
- paperBtn.addEventListener('click',()=>singleRound(1))
- const scissorBtn = document.querySelector('.scissor')
- scissorBtn.addEventListener('click',()=>singleRound(2))
-        
+const paperBtn = document.querySelector('.paper')
+paperBtn.addEventListener('click',()=>singleRound(1))
+const scissorBtn = document.querySelector('.scissor')
+scissorBtn.addEventListener('click',()=>singleRound(2))        
 const round=document.querySelector('.round')
 round.textContent= ''
 const com = document.querySelector('.com')
 com.textContent=''
-
 const buttons = document.querySelectorAll('button')
 const finalResult = document.querySelector('.finalResult')
 finalResult.textContent = ''
-
-function disableButtons(){
-    rockBtn.setAttribute('disabled','disabled')
-    paperBtn.setAttribute('disabled','disabled')
-    scissorBtn.setAttribute('disabled','disabled')
-    
-}
-
-function playAgain(){
-    rockBtn.removeAttribute
-    paperBtn.removeAttribute
-    scissorBtn.removeAttribute;
-    let userScore = 0;
-    let compScore = 0 ;}
-
-
-
-               
+const playAgainbtn =document.querySelector('.playagain');
+playAgainbtn.addEventListener('click', ()=>location.reload())
